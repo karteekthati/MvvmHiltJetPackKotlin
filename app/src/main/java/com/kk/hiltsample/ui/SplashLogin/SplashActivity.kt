@@ -4,9 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import com.kk.hiltsample.R
 import com.kk.hiltsample.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private var _binding : ActivitySplashBinding? = null
     private val binding get() = _binding!!
@@ -19,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, 2000)
